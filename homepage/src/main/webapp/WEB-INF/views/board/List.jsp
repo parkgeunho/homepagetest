@@ -7,6 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript">
+	function test(){
+		alert("??");
+	}
+
+</script>
 <body>
 
 	<table>
@@ -17,7 +23,7 @@
 		<c:forEach items="${list}" var="dto">
 			<tr>
 				<td>${dto.boardnum}</td>
-				<td>${dto.subject}</td>
+				<td><a href="view/${dto.boardnum }">${dto.subject}</a></td>
 				<td>${dto.date}</td>
 			</tr>
 		</c:forEach>

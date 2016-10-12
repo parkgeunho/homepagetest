@@ -11,4 +11,9 @@ public interface BoardMapper {
 	
 	void insertBoard(BoardDTO dto);
 	List<BoardDTO> seleteList();
+	
+	void deleteBoard(int boardnum);
+	
+	void updateBoard(BoardDTO dto);
+	BoardDTO selectBoard(int boardnum);
 }

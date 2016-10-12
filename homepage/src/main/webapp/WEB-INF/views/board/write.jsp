@@ -13,7 +13,6 @@
 			<tr><td>내용</td><td><textarea rows="5" cols="10" name="content"></textarea></td></tr>
 			<tr><td><input type="submit" value="저장"><td><td><input type="button" value="취소"><td></tr>
 		</table>
-	
 	</form>
 </body>
 </html>
