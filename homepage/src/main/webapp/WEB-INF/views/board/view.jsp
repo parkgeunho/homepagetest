@@ -32,7 +32,7 @@
 			document.myForm.action="delete";
 			myForm.submit();
 		}else if(check=='update'){
-			document.myForm.action="/portfolio/board/update";
+			document.myForm.action="/portfolio/board/update/"+${dto.boardnum};
 			myForm.submit();
 		}else{
 			location.href = "/portfolio/board/list";

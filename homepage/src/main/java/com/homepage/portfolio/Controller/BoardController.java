@@ -1,5 +1,6 @@
 package com.homepage.portfolio.Controller;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,47 +32,64 @@ public class BoardController {
 		return "board/write";
 	}
 	
-	
-	/* 글 저장  */	
-	@RequestMapping(value = "board/create" , method = {RequestMethod.POST})
-	public String create(BoardDTO dto,HttpServletRequest request){
-		System.out.println(request.getAttribute("method"));
-		if(request.getAttribute("method")!=null){
-			boardservice.updateBoard(dto);			
-		}else
+	@RequestMapping(value = "board/create", method = {RequestMethod.POST,RequestMethod.GET})
+	public String create(BoardDTO dto){
+		
 		boardservice.insertBoard(dto);
 		
-		return "redirect:/board/list";
+		return "redirect:list";
 	}
 	
-	@RequestMapping(value = "board/update" , method = {RequestMethod.POST})
-	public String update(BoardDTO dto, Model model,HttpServletRequest request){
-		
-		dto = boardservice.selectBoard(dto.getBoardnum());
-		request.setAttribute("dto", dto);
-		model.addAttribute("method", "update");
-		return "board/update_ok";
-	}
 	
-	/* 게시판 화면으로 */
-	@RequestMapping(value = "board/list" , method = {RequestMethod.GET,RequestMethod.POST})
-	public String list(Model model){
-		
-		
+	@RequestMapping(value="board/list" ,method= {RequestMethod.POST,RequestMethod.GET})
+	public String list(HttpServletRequest request){
 		
 		List<BoardDTO> list =  boardservice.seleteList();
-		model.addAttribute("list",list);
+		request.setAttribute("list", list);
+		
+		
 		return "board/List";
 	}
-	
-	@RequestMapping(value= "board/view/{boardnum} ", method = {RequestMethod.GET})
-	public String view (@PathVariable int boardnum,Model model){
+	 
+	@RequestMapping(value ="board/view/{boardnum}",method= {RequestMethod.POST,RequestMethod.GET})
+	public String view(@PathVariable("boardnum") int boardnum , HttpServletRequest req){
+		
+		BoardDTO dto = boardservice.selectBoard(boardnum);
+		
+		req.setAttribute("dto", dto);
 		
 		
-		BoardDTO dto=boardservice.selectBoard(boardnum);
-		
-		model.addAttribute("dto", dto);
 		return "board/view";
+	}
+	
+	@RequestMapping(value = "board/update/{boardnum}" ,method= {RequestMethod.POST,RequestMethod.GET})
+	public String update(BoardDTO dto,HttpServletRequest requet){
+		
+		dto = boardservice.selectBoard(dto.getBoardnum());
+		
+		requet.setAttribute("dto", dto);
+		
+		
+		return "board/update";
+	}
+	
+	@RequestMapping(value = "board/update/update_ok" ,method= {RequestMethod.POST,RequestMethod.GET})
+	public String update_ok(BoardDTO dto,HttpServletRequest requet){
+		
+		boardservice.updateBoard(dto);
+		
+		
+		return "redirect:/board/view/"+ dto.getBoardnum();
+	}
+	
+	
+	@RequestMapping(value = "board/view/delete" ,method= {RequestMethod.POST})
+	public String delete(BoardDTO dto,HttpServletRequest requet){
+		
+		boardservice.deleteBoard(dto.getBoardnum());
+		
+		
+		return "redirect:/board/list";
 	}
 	
 }

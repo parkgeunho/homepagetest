@@ -15,11 +15,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<delete id="deleteBoard" parameterType="integer">
-		delete board where boardnum = #{boardnum}
+		delete from board where boardnum = #{boardnum}
 	</delete>
 	
 	<update id="updateBoard" parameterType="com.homepage.portfolio.DTO.BoardDTO">
-		update to board set subject=#{subject}, content = #{content} where boardnum = #{boardnum}
+		update board set subject=#{subject}, content = #{content} where boardnum = #{boardnum}
 	</update>
 
 	<select id="selectBoard" resultType="com.homepage.portfolio.DTO.BoardDTO" parameterType="integer">
