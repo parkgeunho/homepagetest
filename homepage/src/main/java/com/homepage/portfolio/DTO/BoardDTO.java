@@ -7,7 +7,38 @@ public class BoardDTO {
 	private String content;
 	private String date;
 	
+	private String reparent;
+    private String redepth;
+    private Integer reorder;
+    private String rememo;
+    
+    
 	
+	
+	public String getRememo() {
+		return rememo;
+	}
+	public void setRememo(String rememo) {
+		this.rememo = rememo;
+	}
+	public String getReparent() {
+		return reparent;
+	}
+	public void setReparent(String reparent) {
+		this.reparent = reparent;
+	}
+	public String getRedepth() {
+		return redepth;
+	}
+	public void setRedepth(String redepth) {
+		this.redepth = redepth;
+	}
+	public Integer getReorder() {
+		return reorder;
+	}
+	public void setReorder(Integer reorder) {
+		this.reorder = reorder;
+	}
 	public int getBoardnum() {
 		return boardnum;
 	}
