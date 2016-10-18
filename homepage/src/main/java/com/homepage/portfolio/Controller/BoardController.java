@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.homepage.portfolio.FileUpUtill;
+import com.homepage.portfolio.PagingUtill;
 import com.homepage.portfolio.DTO.BoardDTO;
+import com.homepage.portfolio.DTO.FileDTO;
 import com.homepage.portfolio.Service.BoardService;
 
 @Controller
@@ -19,6 +22,7 @@ public class BoardController {
 	
 	@Autowired
 	BoardService boardservice;
+	
 	
 	/*
 	 * 글쓰기 이동
@@ -30,20 +34,25 @@ public class BoardController {
 		return "board/write";
 	}
 	
-	@RequestMapping(value = "board/create", method = {RequestMethod.POST,RequestMethod.GET})
-	public String create(BoardDTO dto){
+	@RequestMapping(value = "board/create")
+	public String create(BoardDTO dto,HttpServletRequest requet) throws Exception{
 		
-		boardservice.insertBoard(dto);
-		
+		String path = requet.getSession().getServletContext().getRealPath("/");
+		FileUpUtill fu = new FileUpUtill();
+		List<FileDTO> files = fu.uploadFile(dto.getUploadlists(), path);
+
+		boardservice.save(dto, files);
 		return "redirect:list";
 	}
 	
 	
 	@RequestMapping(value="board/list" ,method= {RequestMethod.POST,RequestMethod.GET})
-	public String list(HttpServletRequest request){
+	public String list(HttpServletRequest request,PagingUtill paging){
 		
-		List<BoardDTO> list =  boardservice.seleteList();
+		paging.getPageCount(boardservice.selectCount());
+		List<BoardDTO> list =  boardservice.seleteList(paging);
 		request.setAttribute("list", list);
+		request.setAttribute("paging", paging);
 		
 		
 		return "board/List";
@@ -74,6 +83,7 @@ public class BoardController {
 	@RequestMapping(value = "board/update/update_ok" ,method= {RequestMethod.POST,RequestMethod.GET})
 	public String update_ok(BoardDTO dto,HttpServletRequest requet){
 		
+	
 		boardservice.updateBoard(dto);
 		
 		

@@ -1,5 +1,9 @@
 package com.homepage.portfolio.DTO;
 
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class BoardDTO {
 	
 	private int boardnum;
@@ -12,9 +16,18 @@ public class BoardDTO {
     private Integer reorder;
     private String rememo;
     
+    private List<MultipartFile> uploadlists;
+    
+    
     
 	
 	
+	public List<MultipartFile> getUploadlists() {
+		return uploadlists;
+	}
+	public void setUploadlists(List<MultipartFile> uploadlists) {
+		this.uploadlists = uploadlists;
+	}
 	public String getRememo() {
 		return rememo;
 	}

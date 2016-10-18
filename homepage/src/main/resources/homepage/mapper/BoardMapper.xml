@@ -7,11 +7,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.homepage.portfolio.Mapper.BoardMapper">
 	
 	<insert id="insertBoard" parameterType="com.homepage.portfolio.DTO.BoardDTO">
+		
 		insert into board (subject,content,date) values(#{subject},#{content},now())
 	</insert>
 	
-	<select id="seleteList" resultType="com.homepage.portfolio.DTO.BoardDTO">
-		select * from board
+	<select id="seleteList" resultType="com.homepage.portfolio.DTO.BoardDTO" parameterType="com.homepage.portfolio.PagingUtill">
+		select * from board order by boardnum desc LIMIT ${rowStart-1},${displayDataCount}
 	</select>
 	
 	<delete id="deleteBoard" parameterType="integer">
@@ -25,4 +26,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectBoard" resultType="com.homepage.portfolio.DTO.BoardDTO" parameterType="integer">
 		select * from board where boardnum = #{boardnum}
 	</select>
+	
+	<select id="selectCount" resultType="integer">
+		select count(*) from board;
+	</select>
+	
+	<select id="test" resultType="integer">
+		select max(boardnum) from board
+	</select> 
+	
+	<insert id="fileUploadTest" parameterType="com.homepage.portfolio.DTO.FileDTO">
+	
+		<selectKey resultType="integer" keyProperty="boardnum" order="BEFORE">
+			select ifnull(max(boardnum),0) from board
+		</selectKey>
+		
+		insert into boardfile (boardnum,filename,originname,filesize) values(#{boardnum},#{filename},#{originname},#{filesize})
+		
+	</insert>
+	
+	
 </mapper>
