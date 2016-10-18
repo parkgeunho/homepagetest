@@ -31,9 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from board;
 	</select>
 	
-	<select id="test" resultType="integer">
-		select max(boardnum) from board
-	</select> 
+
 	
 	<insert id="fileUploadTest" parameterType="com.homepage.portfolio.DTO.FileDTO">
 	
@@ -44,6 +42,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into boardfile (boardnum,filename,originname,filesize) values(#{boardnum},#{filename},#{originname},#{filesize})
 		
 	</insert>
+	
+	<select id="findfile" resultType="com.homepage.portfolio.DTO.FileDTO" parameterType="integer">
+	
+		select * from fileboard where boardnum = #{boardnum}
+	</select>
 	
 	
 </mapper>

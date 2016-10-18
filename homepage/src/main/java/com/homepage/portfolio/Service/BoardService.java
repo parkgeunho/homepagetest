@@ -22,4 +22,6 @@ public interface BoardService {
 	public void fileUploadTest(List<FileDTO> filelist);
 	
 	public void save(BoardDTO dto , List<FileDTO> files);
+	
+	public FileDTO findfile(int boardnum);
 }

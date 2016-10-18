@@ -82,6 +82,13 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 
+	@Override
+	public FileDTO findfile(int boardnum) {
+
+		return boardmapper.findfile(boardnum);
+	}
+
+
 
 
 

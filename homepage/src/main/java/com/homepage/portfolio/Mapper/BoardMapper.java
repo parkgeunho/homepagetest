@@ -21,4 +21,6 @@ public interface BoardMapper {
 	int selectCount();
 	
 	void fileUploadTest(FileDTO dto);
+	
+	FileDTO findfile(int boardnum);
 }
