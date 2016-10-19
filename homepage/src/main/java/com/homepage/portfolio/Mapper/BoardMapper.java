@@ -22,5 +22,8 @@ public interface BoardMapper {
 	
 	void fileUploadTest(FileDTO dto);
 	
-	FileDTO findfile(int boardnum);
+	List<FileDTO> findfile(int boardnum);
+	FileDTO downfile(int filenum);
+	
+	void deletefile(int boardnum);
 }

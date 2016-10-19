@@ -93,7 +93,7 @@ public class FileUpUtill {
 	}
 	
 	//경로 생성
-	public String makePath(String path,String filename){
+	public static String makePath(String path,String filename){
 		
 		return path + filename.substring(0, 4)+"/";
 	}

@@ -36,9 +36,9 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "board/create")
-	public String create(BoardDTO dto,HttpServletRequest requet) throws Exception{
+	public String create(BoardDTO dto,HttpServletRequest req) throws Exception{
 		
-		String path = requet.getSession().getServletContext().getRealPath("/");
+		String path = req.getSession().getServletContext().getRealPath("/");
 		FileUpUtill fu = new FileUpUtill();
 		List<FileDTO> files = fu.uploadFile(dto.getUploadlists(), path);
 
@@ -63,9 +63,10 @@ public class BoardController {
 	public String view(@PathVariable("boardnum") int boardnum , HttpServletRequest req){
 		
 		BoardDTO dto = boardservice.selectBoard(boardnum);
+		List<FileDTO> list = boardservice.findfile(boardnum);
 		
 		req.setAttribute("dto", dto);
-		
+		req.setAttribute("list", list);
 		
 		return "board/view";
 	}
@@ -102,13 +103,14 @@ public class BoardController {
 	}
 	
 	
-	/*@RequestMapping(value = "board/filedown/{filenum}")
-	public ModelAndView fileDownload(@PathVariable("filenum") int filenum){
-		
-		
-		
+	@RequestMapping(value = "board/filedown/{filenum}")
+	public ModelAndView fileDownload(@PathVariable("filenum") int filenum,HttpServletRequest request){
+
+			
+			FileDTO dto = boardservice.downfile(filenum);
+			return new ModelAndView("download", "file",dto);
 		}
-	*/
+	
 	
 	
 }

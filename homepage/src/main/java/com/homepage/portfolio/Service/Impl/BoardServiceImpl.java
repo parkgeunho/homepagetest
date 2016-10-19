@@ -36,7 +36,14 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void deleteBoard(int boardnum) {
 
+		if(findfile(boardnum)!=null){
+			
+			boardmapper.deletefile(boardnum);
+		}
+		
 		boardmapper.deleteBoard(boardnum);
+		
+		
 		
 	}
 
@@ -83,9 +90,16 @@ public class BoardServiceImpl implements BoardService {
 
 
 	@Override
-	public FileDTO findfile(int boardnum) {
+	public List<FileDTO> findfile(int boardnum) {
 
 		return boardmapper.findfile(boardnum);
+	}
+
+
+	@Override
+	public FileDTO downfile(int filenum) {
+		
+		return boardmapper.downfile(filenum);
 	}
 
 

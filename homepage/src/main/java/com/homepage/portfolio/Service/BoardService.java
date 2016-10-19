@@ -23,5 +23,7 @@ public interface BoardService {
 	
 	public void save(BoardDTO dto , List<FileDTO> files);
 	
-	public FileDTO findfile(int boardnum);
+	public List<FileDTO> findfile(int boardnum);
+	
+	public FileDTO downfile(int filenum);
 }

@@ -45,8 +45,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="findfile" resultType="com.homepage.portfolio.DTO.FileDTO" parameterType="integer">
 	
-		select * from fileboard where boardnum = #{boardnum}
+		select * from boardfile where boardnum = #{boardnum}
 	</select>
 	
+	<select id="downfile" resultType="com.homepage.portfolio.DTO.FileDTO" parameterType="integer">
+		select * from boardfile where filenum = #{filenum}
+	</select>
 	
+	<delete id="deletefile" parameterType="integer">
+		delete from boardfile where boardnum = #{boardnum}
+	</delete>
 </mapper>

@@ -14,6 +14,17 @@
 		<tr><td>작성일</td><td>${dto.date }</td></tr>
 		<tr><td>내용</td><td>${dto.content }</td></tr>
 		
+		<c:forEach var="file" items="${list }">
+			<Tr>
+				<td colspan="2">
+				<a href = <c:url value="/board/filedown/${file.filenum }"></c:url> >${file.originname }</a>
+				</td>
+			
+			</Tr>
+		
+		</c:forEach>
+		
+		
 	</table>
 		<input type="hidden" name="boardnum" value="${dto.boardnum }">
 		<input type="button" value="수정"  onclick="check('update')"> 
