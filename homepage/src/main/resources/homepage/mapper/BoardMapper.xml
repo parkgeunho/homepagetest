@@ -5,6 +5,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 <mapper namespace="com.homepage.portfolio.Mapper.BoardMapper">
+<sql id="searchBoard">
+	<if test="searchKeyword!=null and searchKeyword!=''">
+        <foreach item="item" index="index" collection="searchTypeArr">
+            AND ${item} LIKE CONCAT('%', #{searchKeyword},'%' )
+         </foreach>
+    </if> 
+</sql>
+
 	
 	<insert id="insertBoard" parameterType="com.homepage.portfolio.DTO.BoardDTO">
 		
