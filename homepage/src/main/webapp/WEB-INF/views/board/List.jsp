@@ -30,6 +30,16 @@
 		
 	
 	</table>
+	<div>
+		<form method="post">
+			<select name="searchTypeArr">
+				<option value="subject" selected="selected">subject</option>
+			</select>
+			<input type="text" name="searchKeyword">
+			<input type="submit">
+		</form>
+	</div>
+	
 	<div class="paging">
     <c:forEach var="i" begin="${paging.pageStart}" end="${paging.pageEnd}" step="1">
         <c:url var="pageLink" value="list">

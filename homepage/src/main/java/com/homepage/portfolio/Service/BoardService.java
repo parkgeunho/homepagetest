@@ -2,14 +2,14 @@ package com.homepage.portfolio.Service;
 
 import java.util.List;
 
-import com.homepage.portfolio.PagingUtill;
 import com.homepage.portfolio.DTO.BoardDTO;
 import com.homepage.portfolio.DTO.FileDTO;
+import com.homepage.portfolio.DTO.SearchDTO;
 
 public interface BoardService {
 	
 	public void insertBoard(BoardDTO dto);
-	public List<BoardDTO> seleteList(PagingUtill paging);
+	public List<BoardDTO> seleteList(SearchDTO search);
 	
 	
 	public void deleteBoard(int boardnum);
@@ -17,7 +17,7 @@ public interface BoardService {
 	public void updateBoard(BoardDTO dto);
 	public BoardDTO selectBoard(int boardnum);
 	
-	public int selectCount();
+	public int selectCount(SearchDTO search);
 	
 	public void fileUploadTest(List<FileDTO> filelist);
 	

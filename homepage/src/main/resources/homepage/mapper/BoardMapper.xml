@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <sql id="searchBoard">
 	<if test="searchKeyword!=null and searchKeyword!=''">
         <foreach item="item" index="index" collection="searchTypeArr">
-            AND ${item} LIKE CONCAT('%', #{searchKeyword},'%' )
+            where ${item} LIKE CONCAT('%', #{searchKeyword},'%' )
          </foreach>
     </if> 
 </sql>
@@ -19,8 +19,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into board (subject,content,date) values(#{subject},#{content},now())
 	</insert>
 	
-	<select id="seleteList" resultType="com.homepage.portfolio.DTO.BoardDTO" parameterType="com.homepage.portfolio.PagingUtill">
-		select * from board order by boardnum desc LIMIT ${rowStart-1},${displayDataCount}
+	<select id="seleteList" resultType="com.homepage.portfolio.DTO.BoardDTO" parameterType="com.homepage.portfolio.DTO.SearchDTO">
+		select * from board <include refid="searchBoard"></include> order by boardnum desc LIMIT ${rowStart-1},${displayDataCount}
 	</select>
 	
 	<delete id="deleteBoard" parameterType="integer">
@@ -35,8 +35,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from board where boardnum = #{boardnum}
 	</select>
 	
-	<select id="selectCount" resultType="integer">
-		select count(*) from board;
+	<select id="selectCount" resultType="integer" parameterType="com.homepage.portfolio.DTO.SearchDTO">
+		select count(*) from  board <include refid="searchBoard"/>
 	</select>
 	
 

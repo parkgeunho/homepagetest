@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.homepage.portfolio.PagingUtill;
 import com.homepage.portfolio.DTO.BoardDTO;
 import com.homepage.portfolio.DTO.FileDTO;
+import com.homepage.portfolio.DTO.SearchDTO;
 import com.homepage.portfolio.Mapper.BoardMapper;
 import com.homepage.portfolio.Service.BoardService;
 
@@ -27,9 +27,9 @@ public class BoardServiceImpl implements BoardService {
 
 
 	@Override
-	public List<BoardDTO> seleteList(PagingUtill paging) {
+	public List<BoardDTO> seleteList(SearchDTO search) {
 		
-		return boardmapper.seleteList(paging);
+		return boardmapper.seleteList(search);
 	}
 
 
@@ -64,8 +64,8 @@ public class BoardServiceImpl implements BoardService {
 
 
 	@Override
-	public int selectCount() {
-		return boardmapper.selectCount();
+	public int selectCount(SearchDTO search) {
+		return boardmapper.selectCount(search);
 	}
 
 

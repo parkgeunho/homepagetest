@@ -15,6 +15,7 @@ import com.homepage.portfolio.FileUpUtill;
 import com.homepage.portfolio.PagingUtill;
 import com.homepage.portfolio.DTO.BoardDTO;
 import com.homepage.portfolio.DTO.FileDTO;
+import com.homepage.portfolio.DTO.SearchDTO;
 import com.homepage.portfolio.Service.BoardService;
 
 @Controller
@@ -48,12 +49,13 @@ public class BoardController {
 	
 	
 	@RequestMapping(value="board/list" ,method= {RequestMethod.POST,RequestMethod.GET})
-	public String list(HttpServletRequest request,PagingUtill paging){
+	public String list(HttpServletRequest request,SearchDTO search){
 		
-		paging.getPageCount(boardservice.selectCount());
-		List<BoardDTO> list =  boardservice.seleteList(paging);
+		search.getPageCount(boardservice.selectCount(search));
+		System.out.println(boardservice.selectCount(search));
+		List<BoardDTO> list =  boardservice.seleteList(search);
 		request.setAttribute("list", list);
-		request.setAttribute("paging", paging);
+		request.setAttribute("paging", search);
 		
 		
 		return "board/List";
