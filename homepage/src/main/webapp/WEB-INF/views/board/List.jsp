@@ -33,9 +33,9 @@
 	<div>
 		<form method="post">
 			<select name="searchTypeArr">
-				<option value="subject" selected="selected">subject</option>
+				<option value="subject" selected="selected" >subject</option>
 			</select>
-			<input type="text" name="searchKeyword">
+			<input type="text" name="searchKeyword" value='<c:out value="${paging.searchKeyword }"/>'>
 			<input type="submit">
 		</form>
 	</div>
