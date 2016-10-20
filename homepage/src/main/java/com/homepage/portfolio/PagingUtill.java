@@ -3,7 +3,7 @@
 public class PagingUtill {
 	
 	
-	private Integer displayDataCount = 1;           // 출력할 데이터 개수
+	private Integer displayDataCount =2;           // 출력할 데이터 개수
 	private Integer rowStart;                       // 시작행번호
 	private Integer rowEnd;                         // 종료행 번호
 	private Integer totalPage;                        // 전체 페이수
