@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form name="myForm" method="post">
+	
 	<table>
 	
 		<tr><td>제목</td><td>${dto.subject }</td></tr>
@@ -30,6 +30,13 @@
 		<input type="button" value="수정"  onclick="check('update')"> 
 		<input type="button" value="삭제" onclick="check('delete')">
 		<input type="button" value="집으로" onclick="check()">
+		
+	<form name="myForm" method="post">
+		 <input type="hidden" name="brdno" value="<c:out value="${boardInfo.brdno}"/>"> 
+        작성자: <input type="text" name="rewriter" size="20" maxlength="20"> <br/>
+        <textarea name="rememo" rows="3" cols="60" maxlength="500" placeholder="댓글을 달아주세요."></textarea>
+        <a href="#" onclick="fn_formSubmit()">저장</a>
+	
 	</form>
 </body>
 

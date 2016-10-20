@@ -7,12 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
-<script type="text/javascript">
-	function test(){
-		alert("??");
-	}
-
-</script>
 <body>
 
 	<table>
@@ -30,14 +24,15 @@
 		
 	
 	</table>
+		<form method="post" name="myform">
 	<div>
-		<form method="post">
+	
 			<select name="searchTypeArr">
 				<option value="subject" selected="selected" >subject</option>
 			</select>
 			<input type="text" name="searchKeyword" value='<c:out value="${paging.searchKeyword }"/>'>
 			<input type="submit">
-		</form>
+		<input type="hidden" name="page" id="page" value="" />
 	</div>
 	
 	<div class="paging">
@@ -45,11 +40,16 @@
         <c:url var="pageLink" value="list">
         <c:param name="page" value="${i}" />
         </c:url>                        
-            <a href="${pageLink}"><c:out value="${i}"/></a>
+            <a href="javascript:fnSubmitForm(${i })"><c:out value="${i}"/></a>
     </c:forEach>
 </div>
-
-
+</form>
+<script type="text/javascript">
+	function fnSubmitForm(page){ 
+		document.myform.page.value=page;
+		document.myform.submit();
+	}
+	</script>
 
 </body>
 </html>

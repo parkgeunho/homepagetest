@@ -54,6 +54,8 @@ public class BoardController {
 		search.getPageCount(boardservice.selectCount(search));
 		List<BoardDTO> list =  boardservice.seleteList(search);
 		
+		System.out.println(search.getSearchKeyword());
+		
 		request.setAttribute("list", list);
 		request.setAttribute("paging", search);
 		
