@@ -63,4 +63,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deletefile" parameterType="integer">
 		delete from boardfile where boardnum = #{boardnum}
 	</delete>
+	
+	
+	
+	<select id="maxreplynum" resultType="integer">
+		select ifnull(max(replynum),0)+1 from reply;
+	</select>
+	
+	<insert id="insertReply" parameterType="com.homepage.portfolio.DTO.ReplyDTO">
+		insert into reply (boardnum,rewriter,recontent,redate,reparent,redepth,reorder) values (#{boardnum),#{rewriter},#{recontent},now(),#{reparent},#{redepth},#{reorder})
+	</insert>
+	
+	<select id="maxorder" parameterType="integer" resultType="integer">
+		select ifnull(max(reorder),0) from reply where boardnum = #{boardnum}
+	</select>
+
+	<select id="selectReply" parameterType="integer" resultType="com.homepage.portfolio.DTO.ReplyDTO">
+		select * from reply where replynum = #{replynum}
+	</select>
+	
+	<update id="updateReply" parameterType="com.homepage.portfolio.DTO.ReplyDTO">
+		update reply set recontent = #{recontent} where replynum = #{replynum}
+	</update>
+	
+	<update id="updateOrder" parameterType="com.homepage.portfolio.DTO.ReplyDTO">
+		update reply set reorder = reorder +1 where boardnum = #{boardnum} and reorder > #{reorder}
+	</update>
+	
+	<update id="deleteReply" parameterType="com.homepage.portfolio.DTO.ReplyDTO">
+		update reply set deletecontent = #{deletecontent} and recontent = #{recontent} where replynum =#{replynum}
+	</update>
+	
+	
+	
 </mapper>

@@ -2,8 +2,8 @@ package com.homepage.portfolio.DTO;
 
 public class ReplyDTO {
 	
-	private int replynum;
-	private int boardnum;
+	private Integer boardnum;
+	private Integer replynum;
 	private String rewriter;
 	private String recontent;
 	private String deletecontent;
@@ -13,17 +13,19 @@ public class ReplyDTO {
 	private int reorder;
 	
 	
-	public int getReplynum() {
-		return replynum;
-	}
-	public void setReplynum(int replynum) {
-		this.replynum = replynum;
-	}
-	public int getBoardnum() {
+	
+	
+	public Integer getBoardnum() {
 		return boardnum;
 	}
-	public void setBoardnum(int boardnum) {
+	public void setBoardnum(Integer boardnum) {
 		this.boardnum = boardnum;
+	}
+	public Integer getReplynum() {
+		return replynum;
+	}
+	public void setReplynum(Integer replynum) {
+		this.replynum = replynum;
 	}
 	public String getRewriter() {
 		return rewriter;

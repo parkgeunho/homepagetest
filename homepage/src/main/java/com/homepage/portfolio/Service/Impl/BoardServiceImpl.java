@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.homepage.portfolio.DTO.BoardDTO;
 import com.homepage.portfolio.DTO.FileDTO;
+import com.homepage.portfolio.DTO.ReplyDTO;
 import com.homepage.portfolio.DTO.SearchDTO;
 import com.homepage.portfolio.Mapper.BoardMapper;
 import com.homepage.portfolio.Service.BoardService;
@@ -17,8 +18,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Autowired
 	BoardMapper boardmapper;
-	
-	
+		
 	@Override
 	public void insertBoard(BoardDTO dto) {
 		
@@ -103,6 +103,57 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 
+	@Override
+	public void insertReply(ReplyDTO reply) {
+		
+		
+		if(reply.getReplynum()==null){
+			
+			reply.setReplynum(maxreplynum());
+			reply.setReparent(reply.getReplynum());
+			reply.setRedepth(0);
+			reply.setReorder(1);
+			
+		}else{
+			
+		}
+		
+
+		boardmapper.insertReply(reply);
+	}
+
+	@Override
+	public ReplyDTO selectReply(int replynum) {
+		
+		return boardmapper.selectReply(replynum);
+	}
+
+	@Override
+	public void updateReply(ReplyDTO reply) {
+		
+		boardmapper.updateReply(reply);
+		
+	}
+
+	@Override
+	public void updateOrder(ReplyDTO reply) {
+		
+		boardmapper.updateOrder(reply);
+		
+	}
+
+	@Override
+	public void deleteReply(int replynum) {
+		
+		boardmapper.deleteReply(replynum);
+		
+	}
+
+
+	@Override
+	public int maxreplynum() {
+		return boardmapper.maxreplynum();
+	}
 
 
 

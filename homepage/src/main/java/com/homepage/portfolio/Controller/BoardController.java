@@ -15,6 +15,7 @@ import com.homepage.portfolio.FileUpUtill;
 import com.homepage.portfolio.PagingUtill;
 import com.homepage.portfolio.DTO.BoardDTO;
 import com.homepage.portfolio.DTO.FileDTO;
+import com.homepage.portfolio.DTO.ReplyDTO;
 import com.homepage.portfolio.DTO.SearchDTO;
 import com.homepage.portfolio.Service.BoardService;
 
@@ -24,6 +25,7 @@ public class BoardController {
 	
 	@Autowired
 	BoardService boardservice;
+	
 	
 	
 	/*
@@ -113,7 +115,17 @@ public class BoardController {
 			
 			FileDTO dto = boardservice.downfile(filenum);
 			return new ModelAndView("download", "file",dto);
-		}
+	}
+	
+	@RequestMapping(value = "board/replysave")
+	public String savereply (ReplyDTO reply){
+		
+
+		boardservice.insertReply(reply);
+		
+		
+		return "redirect:/board/view/"+ reply.getBoardnum();
+	}
 	
 	
 	

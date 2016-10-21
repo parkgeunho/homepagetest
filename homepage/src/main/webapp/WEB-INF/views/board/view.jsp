@@ -26,16 +26,15 @@
 		
 		
 	</table>
-		<input type="hidden" name="boardnum" value="${dto.boardnum }">
 		<input type="button" value="수정"  onclick="check('update')"> 
 		<input type="button" value="삭제" onclick="check('delete')">
 		<input type="button" value="집으로" onclick="check()">
 		
-	<form name="myForm" method="post">
-		 <input type="hidden" name="brdno" value="<c:out value="${boardInfo.brdno}"/>"> 
+	<form name="myForm" action="/portfolio/board/replysave" method="post">
+		 <input type="hidden" name="boardnum" value="${dto.boardnum }">
         작성자: <input type="text" name="rewriter" size="20" maxlength="20"> <br/>
         <textarea name="rememo" rows="3" cols="60" maxlength="500" placeholder="댓글을 달아주세요."></textarea>
-        <a href="#" onclick="fn_formSubmit()">저장</a>
+       <input type="submit">
 	
 	</form>
 </body>
