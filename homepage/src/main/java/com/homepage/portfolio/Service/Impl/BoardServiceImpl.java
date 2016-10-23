@@ -116,9 +116,14 @@ public class BoardServiceImpl implements BoardService {
 			
 		}else{
 			
+			ReplyDTO parent = selectReply(reply.getReplynum());
+			reply.setReparent(parent.getReplynum());
+			reply.setRedepth(parent.getRedepth()+1);
+			reply.setReorder(parent.getReorder()+1);
+			updateOrder(parent);
 		}
 		
-
+		
 		boardmapper.insertReply(reply);
 	}
 
@@ -153,6 +158,13 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int maxreplynum() {
 		return boardmapper.maxreplynum();
+	}
+
+
+	@Override
+	public List<ReplyDTO> listreply(int boardnum) {
+		
+		return  boardmapper.listreply(boardnum);
 	}
 
 

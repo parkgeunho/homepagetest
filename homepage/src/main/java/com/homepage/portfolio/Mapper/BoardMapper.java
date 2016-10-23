@@ -46,6 +46,7 @@ public interface BoardMapper {
 	// 삭제
 	void deleteReply(int replynum);
 	
+	List<ReplyDTO> listreply(int boardnum);
 	
 	int maxreplynum();
 	

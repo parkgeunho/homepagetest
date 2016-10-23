@@ -30,10 +30,21 @@
 		<input type="button" value="삭제" onclick="check('delete')">
 		<input type="button" value="집으로" onclick="check()">
 		
+		<table>
+			<c:forEach var="reply" items="${replylist }">
+				<tr>
+					<Td>${reply.rewriter }</Td><td>${reply.recontent }</td>
+					<td> <input type="button" value="답글"><input type="button" value="수정"><input type="button" value="삭제">
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+		
+		
 	<form name="myForm" action="/portfolio/board/replysave" method="post">
 		 <input type="hidden" name="boardnum" value="${dto.boardnum }">
         작성자: <input type="text" name="rewriter" size="20" maxlength="20"> <br/>
-        <textarea name="rememo" rows="3" cols="60" maxlength="500" placeholder="댓글을 달아주세요."></textarea>
+        <textarea name="recontent" rows="3" cols="60" maxlength="500" placeholder="댓글을 달아주세요."></textarea>
        <input type="submit">
 	
 	</form>
@@ -48,12 +59,17 @@
 		if(check=='delete'){
 			document.myForm.action="delete";
 			myForm.submit();
-		}else if(check=='update'){
+		}else if(check=='update'){		
 			document.myForm.action="/portfolio/board/update/"+${dto.boardnum};
 			myForm.submit();
 		}else{
 			location.href = "/portfolio/board/list";
 		}
+		
+	}
+	
+	function reply(check){
+		
 		
 	}
 	

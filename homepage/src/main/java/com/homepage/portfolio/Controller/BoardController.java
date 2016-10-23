@@ -71,6 +71,12 @@ public class BoardController {
 		BoardDTO dto = boardservice.selectBoard(boardnum);
 		List<FileDTO> list = boardservice.findfile(boardnum);
 		
+List<ReplyDTO> replylist = boardservice.listreply(dto.getBoardnum());
+		
+		
+		req.setAttribute("replylist", replylist);
+		
+		
 		req.setAttribute("dto", dto);
 		req.setAttribute("list", list);
 		

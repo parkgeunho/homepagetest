@@ -48,5 +48,7 @@ public interface BoardService {
 	// 삭제
 	public void deleteReply(int replynum);
 	
+	public List<ReplyDTO> listreply(int boardnum);
+	
 	public int maxreplynum();
 }

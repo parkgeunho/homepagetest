@@ -8,6 +8,7 @@ public class ReplyDTO {
 	private String recontent;
 	private String deletecontent;
 	private String date;
+	
 	private int reparent;
 	private int redepth;
 	private int reorder;
