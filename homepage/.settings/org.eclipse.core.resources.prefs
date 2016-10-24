@@ -1,4 +1,17 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/homepage/portfolio/Controller/BoardController.java=UTF-8
+encoding//src/main/java/com/homepage/portfolio/Controller/FileDownUtill.java=UTF-8
+encoding//src/main/java/com/homepage/portfolio/Controller/MailController.java=UTF-8
+encoding//src/main/java/com/homepage/portfolio/DTO/BoardDTO.java=UTF-8
+encoding//src/main/java/com/homepage/portfolio/DTO/FileDTO.java=UTF-8
+encoding//src/main/java/com/homepage/portfolio/DTO/ReplyDTO.java=UTF-8
+encoding//src/main/java/com/homepage/portfolio/DTO/SearchDTO.java=UTF-8
+encoding//src/main/java/com/homepage/portfolio/FileUpUtill.java=UTF-8
+encoding//src/main/java/com/homepage/portfolio/HomeController.java=UTF-8
+encoding//src/main/java/com/homepage/portfolio/Mapper/BoardMapper.java=UTF-8
+encoding//src/main/java/com/homepage/portfolio/PagingUtill.java=UTF-8
+encoding//src/main/java/com/homepage/portfolio/Service/BoardService.java=UTF-8
+encoding//src/main/java/com/homepage/portfolio/Service/Impl/BoardServiceImpl.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/board/write.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/test.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/test2.jsp=UTF-8

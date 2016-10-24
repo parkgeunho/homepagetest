@@ -12,6 +12,8 @@
 		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
+		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -213,6 +215,28 @@
                     <mainClass>org.test.int1.Main</mainClass>
                 </configuration>
             </plugin>
+            
+             <plugin>
+		        <artifactId>maven-war-plugin</artifactId>
+		        <configuration>
+		          <warSourceDirectory>webapp</warSourceDirectory>
+		        </configuration>
+		      </plugin>     
+		      <!-- tomcat -->
+		      <plugin>
+		        <groupId>org.apache.tomcat.maven</groupId>
+		        <artifactId>tomcat7-maven-plugin</artifactId>
+		        <version>2.2</version>
+		        <configuration>
+		          <url>http://localhost:8080/manager/text</url>
+		          <path>/${project.build.finalName}/</path>
+		          <username>test1</username>
+		          <password>test1</password>
+		        </configuration>
+		      </plugin>
+            
+            
+            
         </plugins>
     </build>
 </project>
