@@ -36,7 +36,7 @@
 				 <input type="button" value="답글" onclick="test(${reply.replynum })">
 					<input type="button" value="수정">
 					<input type="button" value="삭제" onclick="test(${reply.replynum })">
-					
+					테스트!!
 				</div>
 			</c:forEach>
 			
