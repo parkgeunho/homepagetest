@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+ <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 </head>
 <body>
 	
@@ -31,9 +32,9 @@
 		<input type="button" value="집으로" onclick="check()">
 		
 			<c:forEach var="reply" items="${replylist }">
-				<div style="background-color: maroon; height: 200px;" id="reply${reply.replynum }">
+				<div style="background-color: maroon; height: 200px;" id="reply">
 					${reply.rewriter }${reply.recontent }
-				 <input type="button" value="답글" onclick="test(${reply.replynum })">
+				<label id="replys">답글</label>
 					<input type="button" value="수정">
 					<input type="button" value="삭제" onclick="test(${reply.replynum })">
 					테스트!!
@@ -62,6 +63,7 @@
 
 	<script type="text/javascript">
 	
+	
 	function check(check){
 		
 
@@ -77,17 +79,16 @@
 		
 	}
 	
-	function test(num){
+	$(function(){
+		$('#replys').click(function(){
+			alert("?");
+			$("#reply").after( $("#test"));
+			
+			
+		});
 		
-		alert("1");
-		alert(num);
-		var div = document.getElementById("reply"+num);
-		alert("2");
-		var test = document.getElementById("test");
 		
-		div.appendChild(test);
-		
-	}
+	});
 	
 	
 	
