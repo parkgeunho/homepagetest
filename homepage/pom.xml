@@ -216,12 +216,6 @@
                 </configuration>
             </plugin>
             
-             <plugin>
-		        <artifactId>maven-war-plugin</artifactId>
-		        <configuration>
-		          <warSourceDirectory>webapp</warSourceDirectory>
-		        </configuration>
-		      </plugin>     
 		      <!-- tomcat -->
 		      <plugin>
 		        <groupId>org.apache.tomcat.maven</groupId>
