@@ -135,4 +135,6 @@ List<ReplyDTO> replylist = boardservice.listreply(dto.getBoardnum());
 	
 	
 	
+	
+	
 }

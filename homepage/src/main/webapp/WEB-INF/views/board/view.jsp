@@ -30,17 +30,17 @@
 		<input type="button" value="삭제" onclick="check('delete')">
 		<input type="button" value="집으로" onclick="check()">
 		
-		<table>
 			<c:forEach var="reply" items="${replylist }">
-				<tr>
-					<Td>${reply.rewriter }</Td><td>${reply.recontent }</td>
-					<td> <input type="button" value="답글">
+				<div style="background-color: maroon; height: 200px;" id="reply${reply.replynum }">
+					${reply.rewriter }${reply.recontent }
+				 <input type="button" value="답글" onclick="test(${reply.replynum })">
 					<input type="button" value="수정">
-					<input type="button" value="삭제" onclick="">
-					</td>
-				</tr>
+					<input type="button" value="삭제" onclick="test(${reply.replynum })">
+					
+				</div>
 			</c:forEach>
-		</table>
+			
+			
 		
 		
 	<form name="myForm" action="/portfolio/board/replysave" method="post">
@@ -50,6 +50,13 @@
        <input type="submit">
 	
 	</form>
+	
+	<div style="background-color: blue;" id="test">
+	끼룩끼룩!
+	
+	</div>
+	
+	
 </body>
 
 
@@ -70,8 +77,15 @@
 		
 	}
 	
-	function reply(check){
+	function test(num){
 		
+		alert("1");
+		alert(num);
+		var div = document.getElementById("reply"+num);
+		alert("2");
+		var test = document.getElementById("test");
+		
+		div.appendChild(test);
 		
 	}
 	

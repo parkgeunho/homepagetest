@@ -6,33 +6,29 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class BoardDTO {
 	
-	private int boardnum;
-	private String subject;
-	private String content;
-	private String date;
+	private int boardnum; // 번호
+	private String subject; //제목
+	private String content; //내용
+	private String date; //작성일
 	
-	private String reparent;
-    private String redepth;
-    private Integer reorder;
-    private String rememo;
+	private String reparent; // 부모값
+    private String redepth;  // 들어갈 값
+    private Integer reorder; // 순서값
+    private int group; // 그룹값
     
     private List<MultipartFile> uploadlists;
     
     
     
 	
+    
+    
 	
 	public List<MultipartFile> getUploadlists() {
 		return uploadlists;
 	}
 	public void setUploadlists(List<MultipartFile> uploadlists) {
 		this.uploadlists = uploadlists;
-	}
-	public String getRememo() {
-		return rememo;
-	}
-	public void setRememo(String rememo) {
-		this.rememo = rememo;
 	}
 	public String getReparent() {
 		return reparent;
@@ -75,6 +71,12 @@ public class BoardDTO {
 	}
 	public void setDate(String date) {
 		this.date = date;
+	}
+	public int getGroup() {
+		return group;
+	}
+	public void setGroup(int group) {
+		this.group = group;
 	}
 	
 	
