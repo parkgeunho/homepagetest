@@ -34,7 +34,9 @@
 			<c:forEach var="reply" items="${replylist }">
 				<tr>
 					<Td>${reply.rewriter }</Td><td>${reply.recontent }</td>
-					<td> <input type="button" value="답글"><input type="button" value="수정"><input type="button" value="삭제">
+					<td> <input type="button" value="답글">
+					<input type="button" value="수정">
+					<input type="button" value="삭제" onclick="">
 					</td>
 				</tr>
 			</c:forEach>
