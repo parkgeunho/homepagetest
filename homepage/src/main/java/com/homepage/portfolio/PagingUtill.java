@@ -1,12 +1,13 @@
-﻿package com.homepage.portfolio;
+package com.homepage.portfolio;
 
 public class PagingUtill {
 	
+	//여기 에러 생겼어씅ㅁ
 	
 	private Integer displayDataCount =2;           // 출력할 데이터 개수
 	private Integer rowStart;                       // 시작행번호
 	private Integer rowEnd;                         // 종료행 번호
-	private Integer totalPage;                        // 전체 페이수
+	private Integer totalPage;                        // 전체 페이수d
 	private Integer totalData = 0;                     // 전체 데이터 수
 	private Integer page;                           // 현재 페이지
 	private Integer pageStart;                      // 시작페이지
