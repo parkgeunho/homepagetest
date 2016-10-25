@@ -37,7 +37,7 @@
 				<label id="replys">답글</label>
 					<input type="button" value="수정">
 					<input type="button" value="삭제" onclick="test(${reply.replynum })">
-					asdfasdfasdf
+					
 				</div>
 			</c:forEach>
 			
@@ -54,7 +54,7 @@
 	
 	<div style="background-color: blue;" id="test">
 	끼룩끼룩!
-	
+	asdfasdfasdf
 	</div>
 	
 	
