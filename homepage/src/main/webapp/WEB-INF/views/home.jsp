@@ -37,5 +37,7 @@
   data-show-faces="true">
 </div>
 
+console.log(${access });
+
 </body>
 </html>

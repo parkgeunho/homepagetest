@@ -64,7 +64,7 @@ public class HomeController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		System.out.println(Math.random()*10000);
 		String formattedDate = dateFormat.format(date);
-		
+		model.addAttribute("access", access);
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
