@@ -39,4 +39,17 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 	  <property name="basePackage" value="com.homepage.portfolio.Mapper" />
 	</bean>
+	
+	
+	
+	
+	<bean id="connectionFactory" class="org.springframework.social.facebook.connect.FacebookConnectionFactory">
+	<constructor-arg value="1241189622619965" />
+	<constructor-arg value="fa7b7f7fbcbffc0411f5061cd3d677b0" />
+</bean>
+	
+	
+	
+	
+	
 </beans>
