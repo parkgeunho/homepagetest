@@ -1,9 +1,16 @@
 package com.homepage.portfolio.Controller;
 
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.homepage.portfolio.FileUpUtill;
 import com.homepage.portfolio.DTO.BoardDTO;
+import com.homepage.portfolio.DTO.CalendarDTO;
 import com.homepage.portfolio.DTO.FileDTO;
 import com.homepage.portfolio.DTO.ReplyDTO;
 import com.homepage.portfolio.DTO.SearchDTO;
@@ -52,7 +60,7 @@ public class BoardController {
 	@RequestMapping(value="board/list" ,method= {RequestMethod.POST,RequestMethod.GET})
 	public String list(HttpServletRequest request,SearchDTO search){
 		
-		search.getPageCount(boardservice.selectCount(search));
+/*		search.getPageCount(boardservice.selectCount(search));
 		List<BoardDTO> list =  boardservice.seleteList(search);
 		
 		System.out.println(search.getSearchKeyword());
@@ -60,7 +68,7 @@ public class BoardController {
 		request.setAttribute("list", list);
 		request.setAttribute("paging", search);
 		
-		
+*/		
 		return "board/List";
 	}
 	 
@@ -133,7 +141,74 @@ List<ReplyDTO> replylist = boardservice.listreply(dto.getBoardnum());
 	}
 	
 	
+	@RequestMapping(value = "test")
+	public String test (HttpServletRequest requet){
+
+		
+		List<CalendarDTO> testlist = new ArrayList<CalendarDTO>();
+		
+		CalendarDTO reply = new CalendarDTO();
+		JSONObject jsonObject = new JSONObject();
+		for(int i = 0 ; i <3 ; i++){
+				System.out.println(i);
+			reply.setTitle("title1"+i);
+			reply.setStart("2017-03-10");
+			reply.setEnd("2017-03-13");
+			
+			testlist.add(reply);
+		}
+			jsonObject.put("test", testlist);
+		
+		System.out.println(jsonObject);
+		requet.setAttribute("test", jsonObject);
+		
+		
+		return "calendar/test";
+	}
 	
+	@RequestMapping(value = "jsonck")
+	public String jsonck (HttpServletRequest requet,HttpServletResponse response) throws Exception{
+		
+
+
+
+		
+		List<CalendarDTO> testlist = new ArrayList<CalendarDTO>();
+		
+		CalendarDTO reply = new CalendarDTO();
+		JSONObject jsonObject = new JSONObject();
+		for(int i = 0 ; i <3 ; i++){
+				System.out.println(i);
+			reply.setTitle("title1"+i);
+			reply.setStart("2017-03-10");
+			reply.setEnd("2017-03-13");
+			
+			testlist.add(reply);
+		}
+			jsonObject.put("test", testlist);
+		
+		System.out.println(jsonObject);
+		requet.setAttribute("test", jsonObject);
+		
+		
+		response.setContentType("text/xml;charset=utf-8");
+
+		PrintWriter printWriter = response.getWriter();
+
+		printWriter.print(jsonObject);
+
+		printWriter.flush();
+
+		printWriter.close();
+		
+		return null;
+		
+	}
 	
+	@RequestMapping(value = "tqwe")
+	public String adasd (HttpServletRequest requet,HttpServletResponse response) throws Exception{
+		
+		return "calendar/calendarCreate";
+	}
 	
 }
